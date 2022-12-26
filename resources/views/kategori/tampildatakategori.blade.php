@@ -30,14 +30,7 @@
 											<form action="/updatedatakategori/{{ $data->id }}" method="POST" enctype="multipart/form-data" >
 												@csrf
 
-												<!--ID KATEGORI -->
-												<div class="mb-3">
-													<label for="exampleInputEmail1" class="form-label"><h5>Id Kategori</h5></label>
-													<input type="text" name="idkategori" readonly="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $data->idkategori }}">
-												</div>
-												@error('idkategori')
-												<div class="alert alert-danger">{{ $message }}</div>
-												@enderror
+												
 
 												<!-- KATEGORI -->
 												<div class="mb-3">

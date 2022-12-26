@@ -90,6 +90,10 @@ class BarangkeluarController extends Controller
     }
 
     public function deletebarangkeluar($id){ //UNTUK MENDELETE DATA
+        $count = Barang::where('namabarang', $id)->count();
+            if($count > 0){
+                return back()->with('error', 'Barang Sedang Digunakan');
+    }
     	$data = Barangkeluar::find($id);
     	$data->delete();
     	return redirect()->route('barangkeluar')->with('success','Data Barang Keluar Berhasil Di Hapus');

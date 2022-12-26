@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Barang;
+use App\Models\Barangmasuk;
+use App\Models\Barangkeluar;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 
@@ -96,6 +98,14 @@ class BarangController extends Controller
     }
 
     public function deletebarang($id){ //UNTUK MENDELETE DATA
+        $count = Barangmasuk::where('namabarang', $id)->count();
+            if($count > 0){
+                return back()->with('error', 'Barang Sedang Digunakan');
+    }
+        $count = Barangkeluar::where('namabarang', $id)->count();
+            if($count > 0){
+                return back()->with('error', 'Barang Sedang Digunakan');
+    }
     	$data = Barang::find($id);
     	$data->delete();
     	return redirect()->route('barang')->with('success','Data Barang Berhasil Di Hapus');

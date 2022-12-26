@@ -32,13 +32,7 @@
 
 												@csrf
 
-												<div class="mb-3">
-													<label for="exampleInputEmail1" class="form-label"><h5>Id Kategori</h5></label>
-													<input type="text" name="idkategori" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="1">
-												</div>
-												@error('idkategori')
-												<div class="alert alert-danger">{{ $message }}</div>
-												@enderror
+												
 
 
 												<div class="mb-3">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pelanggan;
+use App\Models\Barangkeluar;
 use Illuminate\Http\Request;
 
 class PelangganController extends Controller
@@ -67,6 +68,10 @@ class PelangganController extends Controller
     }
 
     public function deletepelanggan($id){ //UNTUK MENDELETE DATA
+        $count = Barangkeluar::where('namapelanggan', $id)->count();
+            if($count > 0){
+                return back()->with('error', 'Nama Pelanggan Sedang Digunakan');
+    }
     	$data = Pelanggan::find($id);
     	$data->delete();
     	return redirect()->route('pelanggan')->with('success','Data Pelanggan Berhasil Di Hapus');

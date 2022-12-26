@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kategori;
+use App\Models\Barang;
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
@@ -21,18 +22,18 @@ class KategoriController extends Controller
     public function insertdatakategori (Request $request){ //UNTUK MENAMBAHKAN DATA
 
     	$this->validate($request,[
-            'idkategori' => 'unique:kategoris',
+            
     		'kategori' => 'unique:kategoris',
     		
     		
     	],[
-            'idkategori.unique.required' => 'Kategori Harus Diisi',
+            
     		'kategori.unique.required' => 'Kategori Harus Diisi',
     		
     	]);
 
     	$data = Kategori::create([
-            'idkategori' => $request->idkategori,
+            
     		'kategori' => $request->kategori,
     		
     	]);
@@ -52,7 +53,7 @@ class KategoriController extends Controller
     	$data = Kategori::find($id);
     	
     		$data->update([
-    		'idkategori' => $request->idkategori,
+    		
             'kategori' => $request->kategori,
     		
     	]);
@@ -62,6 +63,10 @@ class KategoriController extends Controller
     }
 
     public function deletekategori($id){ //UNTUK MENDELETE DATA
+        $count = Barang::where('kategori_id', $id)->count();
+            if($count > 0){
+                return back()->with('error', 'Kategori Sedang Digunakan');
+    }
     	$data = Kategori::find($id);
     	$data->delete();
     	return redirect()->route('kategori')->with('success','Data Kategori Berhasil Di Hapus');

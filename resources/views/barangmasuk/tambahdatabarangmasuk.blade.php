@@ -82,7 +82,8 @@
 													@enderror
 
 													<div class="mb-3">
-														<label for="exampleInputEmail1" class="form-label"><h5>Jumlah Beli</h5></label>
+														<label for="exampleInputEmail1" class="form-label"><h5>Jumlah Suplai Barang</h5></label>
+														<label for="exampleInputEmail1" class="form-label"><h5>Jumlah Suplai Barang</h5></label>
 														<input type="number" name="jumlahbeli" class="form-control" min="1" id="jumlahbeli" placeholder="1">
 													</div>
 													@error('jumlahbeli')

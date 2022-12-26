@@ -66,7 +66,7 @@
                               <th scope="col">Nama Barang</th>
                               
                               <th scope="col">Merk</th>
-                              <th scope="col">Jumlah Beli</th>
+                              <th scope="col">Jumlah Suplai Barang</th>
                               <th scope="col">Harga Barang</th>
                               <th scope="col">Total</th>
 

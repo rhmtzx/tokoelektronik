@@ -74,7 +74,7 @@
                                                     @foreach ($data as $row)
                                                     <tr>
                                                         <th scope="row">{{ $no++ }}</th>
-                                                        <td>{{ $row->idkategori}}</td>
+                                                        <td>{{ $row->id}}</td>
                                                         <td>{{ $row->kategori}}</td>
                                                         
                                                         <td>
@@ -160,6 +160,12 @@
 <script>
     @if (Session::has('success'))
     toastr.success("{{ Session::get('success') }}")
+    @endif
+</script>
+
+<script>
+    @if (Session::has('error'))
+    toastr.error("{{ Session::get('error') }}")
     @endif
 </script>
 

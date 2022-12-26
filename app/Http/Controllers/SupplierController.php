@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Supplier;
+use App\Models\Barangmasuk;
 use Illuminate\Http\Request;
 
 class SupplierController extends Controller
@@ -89,6 +90,10 @@ class SupplierController extends Controller
     }
 
     public function deletesupplier($id){ 
+        $count = Barangmasuk::where('namasupplier', $id)->count();
+            if($count > 0){
+                return back()->with('error', 'Nama Supplier Sedang Digunakan');
+    }
     	$data = Supplier::find($id);
     	$data->delete();
     	return redirect()->route('supplier')->with('success','Data Supplier Berhasil Di Hapus');
